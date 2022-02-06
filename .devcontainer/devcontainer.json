@@ -1,0 +1,28 @@
+{
+    "name": "DevContainer fastAPI",
+    
+    // Provide the dev container with a Dockerfile that it can use to build an image and run the container.
+    "dockerFile": "Dockerfile",
+    
+    // Command(s) to run before the container is created.
+    // In this case we are installing the node modules.
+    // "initializeCommand": "pip install debugpy",
+    
+    // Starts the development server every time the container starts.
+    // This is triggered on reopening the container as well.
+    "postStartCommand": "python -m debugpy --wait-for-client --listen 0.0.0.0:5678 -m uvicorn src.main:app --reload --host 0.0.0.0 --port 8000",
+    
+    // Forward your application's port(s) running in the container to the local machine.
+    "forwardPorts": [8000, 5678],
+    
+    // Required VSC code extensions that you want to automatically install for the developers to use.
+    
+    "extensions": [
+        "ms-python.python",
+        "fnando.linter",
+        "esbenp.prettier-vscode",
+        "eamodio.gitlens"
+    ]
+    // Use the devcontainer.json reference to explore all possible configurations.
+    // https://code.visualstudio.com/docs/remote/devcontainerjson-reference
+}
